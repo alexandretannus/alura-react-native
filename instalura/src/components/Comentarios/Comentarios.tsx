@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { FlatList, Image, Text, TextInput, TouchableOpacity, View, _View } from 'react-native'
-import { ComentarioInfo } from '../../../App'
+import { ComentarioInfo } from '../../interfaces/ComentarioInfo'
 import estilo from './estilo'
 
 const Comentarios = ({comentarios}: {comentarios: ComentarioInfo[]}) => {
