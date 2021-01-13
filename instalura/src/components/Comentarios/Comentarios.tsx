@@ -7,9 +7,7 @@ const Comentarios = ({comentarios}: {comentarios: ComentarioInfo[]}) => {
 
     const [estadoComentarios, setComentarios] = useState(comentarios)
 
-    const adicionarComentario = () => {
-        
-        alert(`antes: ${estadoComentarios.length}`)
+    const adicionarComentario = () => {        
         campoInput?.clear()
         const novoComentario: ComentarioInfo = {
             date: Date.now(),
@@ -19,8 +17,6 @@ const Comentarios = ({comentarios}: {comentarios: ComentarioInfo[]}) => {
         }
         const novoComentarios = [...estadoComentarios, novoComentario]
         setComentarios([...estadoComentarios, novoComentario])
-        
-        alert(`depois: ${estadoComentarios.length}`)
     }
 
     let campoInput: TextInput | null;
