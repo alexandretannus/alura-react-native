@@ -5,9 +5,10 @@ import { Cabecalho } from './src/components/Cabecalho';
 import { Comentarios } from './src/components/Comentarios';
 import { Foto } from './src/components/Foto';
 import { Feed } from './src/views/Feed';
+import { Login } from './src/views/Login';
 
 export default function App() {  
   return (
-    <Feed />
+    <Login />
   );
 }
