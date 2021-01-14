@@ -15,8 +15,6 @@ const Login = () => {
             const token = await efetuarLogin(usuario,senha)
             if (token) {
                 await AsyncStorage.setItem("instalura_token", token)
-                const t = await AsyncStorage.getItem("instalura_token")
-                console.warn(t);
             }
             
         } catch (error) {
