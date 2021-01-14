@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Fragment, useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import efetuarLogin from '../../api/login';
@@ -11,10 +12,15 @@ const Login = () => {
 
     const fazerLogin = async () => {
         try {
-            await efetuarLogin(usuario,senha)
+            const token = await efetuarLogin(usuario,senha)
+            if (token) {
+                await AsyncStorage.setItem("instalura_token", token)
+                const t = await AsyncStorage.getItem("instalura_token")
+                console.warn(t);
+            }
+            
         } catch (error) {
-            setMensagemErro(error.message)
-            console.warn(error.message);            
+            setMensagemErro(error.message)         
         }
         
     }
