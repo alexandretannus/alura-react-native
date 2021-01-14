@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { FlatList, Platform, ScrollView, StatusBar } from 'react-native';
+import adicionarComentario from '../../api/comentario';
+import { curtirFoto, pegarImgLike } from '../../api/curtidas';
 import lerFotos from '../../api/feed';
 import { Cabecalho } from '../../components/Cabecalho';
 import { Comentarios } from '../../components/Comentarios';
@@ -28,8 +30,17 @@ const Feed = () => {
             ({item}) => 
             <Fragment>
               <Cabecalho nomeUsuario={item.userName} urlImage={item.userURL} />
-              <Foto urlFoto={item.url} descricao={item.description} quantidadeLikes={item.likes} />
-              <Comentarios comentarios={item.comentarios}/>
+              <Foto 
+                urlFoto={item.url} 
+                descricao={item.description} 
+                quantidadeLikes={item.likes} 
+                imgLike={pegarImgLike}
+                curtirFoto={curtirFoto}  
+              />
+              <Comentarios 
+                comentarios={item.comentarios}
+                adicionarComentario={adicionarComentario}
+              />
             </Fragment>
           }
         />

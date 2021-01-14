@@ -3,19 +3,16 @@ import { FlatList, Image, Text, TextInput, TouchableOpacity, View, _View } from 
 import { ComentarioInfo } from '../../interfaces/ComentarioInfo'
 import estilo from './estilo'
 
-const Comentarios = ({comentarios}: {comentarios: ComentarioInfo[]}) => {
+const Comentarios = ({comentarios, adicionarComentario}: {comentarios: ComentarioInfo[], adicionarComentario: any}) => {
 
     const [estadoComentarios, setComentarios] = useState(comentarios)
 
-    const adicionarComentario = () => {        
+    const comentar = () => {
         campoInput?.clear()
-        const novoComentario: ComentarioInfo = {
-            date: Date.now(),
-            text: conteudoCampoInput,
-            userName: "Alexandre"
-
-        }
-        const novoComentarios = [...estadoComentarios, novoComentario]
+        const novoComentario = adicionarComentario(
+            conteudoCampoInput,
+            "Alexandre"
+        )
         setComentarios([...estadoComentarios, novoComentario])
     }
 
@@ -42,7 +39,7 @@ const Comentarios = ({comentarios}: {comentarios: ComentarioInfo[]}) => {
                     onChangeText={texto => conteudoCampoInput = texto}
                     ref={textInput => campoInput = textInput}
                 />
-                <TouchableOpacity onPress={adicionarComentario}>
+                <TouchableOpacity onPress={comentar}>
                     <Image style={estilo.imagem} source={require("../../../resources/img/send.png")} />
                 </TouchableOpacity>
             </View>

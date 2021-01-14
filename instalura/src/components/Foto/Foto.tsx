@@ -4,9 +4,24 @@ import { curtirFoto, pegarImgLike } from '../../api/curtidas';
 import estilo from './estilo';
 
 
-const Foto = ({urlFoto, descricao, quantidadeLikes}: {urlFoto: string, descricao: string, quantidadeLikes: number}) => {
+const Foto = ({
+        urlFoto, 
+        descricao, 
+        quantidadeLikes, 
+        curtirFoto, 
+        imgLike
+    }: 
+    {
+        urlFoto: string, 
+        descricao: string, 
+        quantidadeLikes: number, 
+        curtirFoto: any, 
+        imgLike: any
+    }) => {
+        
     const [like, setLike] = useState(false)
     const [likes, setLikes] = useState(quantidadeLikes)
+
     const clicouCurtir = () => {
         const [novoEstadoCurtiu, curtidas] = curtirFoto(like, likes)
         setLikes(curtidas)

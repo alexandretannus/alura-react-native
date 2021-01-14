@@ -1,14 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { FlatList, Platform, ScrollView, StatusBar } from 'react-native';
-import lerFotos from './src/api/feed';
-import { Cabecalho } from './src/components/Cabecalho';
-import { Comentarios } from './src/components/Comentarios';
-import { Foto } from './src/components/Foto';
+import React from 'react';
 import { Feed } from './src/views/Feed';
 import { Login } from './src/views/Login';
 
 export default function App() {  
   return (
-    <Login />
+    <Feed />
   );
 }
