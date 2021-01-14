@@ -5,7 +5,7 @@ const efetuarLogin = async (usuario: string, senha: string) => {
 
     const cabecalhoHttp = {
         method: "POST",
-        header: {
+        headers: {
             "Content-type": "application/json"
         },
         body: JSON.stringify({
@@ -15,6 +15,12 @@ const efetuarLogin = async (usuario: string, senha: string) => {
     }
 
     const resposta = await fetch(`http://${fetchUrl}:3030/users/login`, cabecalhoHttp);
+
+    if (resposta.ok) {
+        
+    } else {        
+        throw new Error("Não foi possível logar")
+    } 
     
     console.warn(resposta)
 }

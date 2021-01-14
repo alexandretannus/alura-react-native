@@ -7,9 +7,15 @@ const Login = () => {
 
     const [usuario, setUsuario] = useState("")
     const [senha, setSenha] = useState("")
+    const [mensagemErro, setMensagemErro] = useState("")
 
-    const fazerLogin = () => {
-        efetuarLogin(usuario,senha)
+    const fazerLogin = async () => {
+        try {
+            await efetuarLogin(usuario,senha)
+        } catch (error) {
+            setMensagemErro(error.message)
+            console.warn(error.message);            
+        }
         
     }
 
@@ -27,6 +33,7 @@ const Login = () => {
                     onChangeText={texto => setSenha(texto)}
                     secureTextEntry={true}
                 />
+                <Text>{mensagemErro}</Text>
             </View>
             <View style={estilo.buttonView}>                
                 <Button 
