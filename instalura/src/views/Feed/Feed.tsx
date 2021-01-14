@@ -15,7 +15,7 @@ const Feed = () => {
       lerFotos(setFotos);
     },[])
   
-    let altura = Platform.OS === "ios" ? 35 : 5
+    let altura = 0
   
     return (
       <ScrollView style={{marginTop: altura}}>
@@ -48,5 +48,18 @@ const Feed = () => {
   
     );
   }
+
+  Feed.navigationOptions = ({navigation}: {navigation: any}) => {
+    const opcoes = {
+        title: navigation.getParam("nome"),
+        headerShown: true
+    }
+
+    if (Platform.OS === "android") {
+        opcoes.headerShown = false
+    }
+
+    return opcoes
+}
   
   export default Feed;

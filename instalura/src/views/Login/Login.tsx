@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Fragment, useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, Platform, Text, TextInput, View } from 'react-native';
 import efetuarLogin from '../../api/login';
 import estilo from './estilo';
 
@@ -16,7 +16,7 @@ const Login = ({ navigation }: { navigation: any }) => {
             if (token) {
                 await AsyncStorage.setItem("instalura_token", token)
             }
-            navigation.push("Feed")
+            navigation.replace("Feed", { nome: usuario })
             
         } catch (error) {
             setMensagemErro(error.message)         
@@ -48,6 +48,19 @@ const Login = ({ navigation }: { navigation: any }) => {
             </View>
         </Fragment>        
     )
+}
+
+Login.navigationOptions = () => {
+    const opcoes = {
+        title: "Log",
+        headerShown: true
+    }
+
+    if (Platform.OS === "android") {
+        opcoes.headerShown = false
+    }
+
+    return opcoes
 }
 
 export default Login
